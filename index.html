@@ -70,6 +70,11 @@
             z-index: 9999;
             transition: opacity 0.8s ease-out;
         }
+
+        /* Once faded out, stop blocking clicks even before display:none */
+        #loader.is-hidden {
+            pointer-events: none;
+        }
         
         #loader .text {
             font-family: 'DM Mono', monospace;
@@ -721,6 +726,7 @@
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
+                loader.classList.add('is-hidden');
                 loader.style.opacity = '0';
                 setTimeout(() => {
                     loader.style.display = 'none';
