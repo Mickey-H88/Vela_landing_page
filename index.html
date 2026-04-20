@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aged Care SOA Drafting — $400 · 48 Hours · Sydney</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0f0e0c;
+            --paper: #f5f2ec;
+            --accent: #c84b2f;
+            --accent-muted: #e8a090;
+            --rule: #d4cfc6;
+            --mid: #7a7570;
+            --highlight: #f0e8d8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: 'Instrument Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6, .cormorant {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+        }
+
+        .dm-mono {
+            font-family: 'DM Mono', monospace;
+            font-weight: 400;
+        }
+
+        /* Typography */
+        p {
+            max-width: 640px;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        em, i {
+            font-style: italic;
+        }
+
+        /* Page Loader */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--ink);
+            color: var(--paper);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out;
+        }
+        
+        #loader .text {
+            font-family: 'DM Mono', monospace;
+            font-size: 1rem;
+            opacity: 0;
+            animation: fadeInOut 2s ease-in-out forwards;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            30% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 8rem 0;
+            border-bottom: 1px solid var(--rule);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(245, 242, 236, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--rule);
+            z-index: 100;
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .wordmark {
+            font-size: 1.8rem;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        nav::-webkit-scrollbar {
+            display: none; /* Chrome, Safari */
+        }
+
+        nav a {
+            font-family: 'DM Mono', monospace;
+            text-transform: lowercase;
+            font-variant: small-caps;
+            text-decoration: none;
+            color: var(--mid);
+            font-size: 0.9rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s, border-color 0.3s;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: var(--ink);
+        }
+
+        nav a.active {
+            color: var(--ink);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        /* Hero */
+        .hero-headline {
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.95;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .rule-line {
+            height: 1px;
+            background-color: var(--rule);
+            width: 100%;
+            margin: 2rem 0;
+        }
+
+        .hero-subheadline {
+            font-size: 1.4rem;
+            color: var(--mid);
+            margin-bottom: 4rem;
+        }
+
+        .stat-row {
+            display: flex;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-block {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--mid);
+        }
+
+        .stat-block strong {
+            display: block;
+            color: var(--ink);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+        }
+
+        /* Typography components */
+        .section-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            display: block;
+            border-radius: 2px;
+        }
+
+        .section-heading {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+
+        .pull-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.8rem;
+            line-height: 1.4;
+            color: var(--ink);
+            border-left: 2px solid var(--accent);
+            padding-left: 2rem;
+            margin: 3rem 0;
+            max-width: 800px;
+        }
+
+        /* Grids & Layouts */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Scope Lists */
+        .scope-list {
+            list-style: none;
+        }
+
+        .scope-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .scope-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--mid);
+        }
+
+        .scope-header {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .scope-header.in { color: #2d6641; }
+        .scope-header.out { color: var(--accent); }
+
+        .protocol-note {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--mid);
+            max-width: 640px;
+            margin-top: 4rem;
+        }
+
+        /* Pricing Table */
+        .pricing-table {
+            border: 1px solid var(--rule);
+            max-width: 640px;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-row {
+            display: flex;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .pricing-row:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--mid);
+            padding: 1.5rem;
+            width: 150px;
+            flex-shrink: 0;
+            border-right: 1px solid var(--rule);
+        }
+
+        .pricing-value {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .compliance-callout {
+            background-color: var(--highlight);
+            border-left: 2px solid var(--accent);
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .compliance-callout .label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .compliance-callout p {
+            margin-bottom: 0;
+            max-width: 100%;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--ink);
+            color: var(--paper);
+            border: 1px solid var(--ink);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--paper);
+            color: var(--ink);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--ink);
+            border: 1px solid var(--rule);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--ink);
+        }
+
+        /* PDFs */
+        .pdf-container {
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-label {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        iframe {
+            width: 100%;
+            border: 1px solid var(--rule);
+            background: #fff;
+        }
+
+        .download-link {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--mid);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 0.5rem;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .download-link:hover {
+            border-color: var(--mid);
+        }
+
+        /* Academic Record */
+        .academic-record {
+            margin-top: 4rem;
+            max-width: 800px;
+        }
+
+        .academic-frame {
+            background-color: var(--ink);
+            padding: 2rem;
+            margin-top: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .academic-frame img {
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: block;
+        }
+
+        .academic-caption {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-muted);
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        footer .closing-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-style: italic;
+            line-height: 1.2;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-block {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--mid);
+            line-height: 1.8;
+        }
+        
+        .contact-block a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .contact-block a:hover {
+            color: var(--ink);
+        }
+
+        /* Responsive Nav */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav {
+                width: 100%;
+                padding-bottom: 0.5rem;
+            }
+            
+            .hero-headline {
+                font-size: 3.5rem;
+            }
+            
+            .stat-row {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page Loader -->
+    <div id="loader">
+        <div class="text">Loading</div>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="wordmark cormorant">Mickey Huynh</a>
+            <nav id="navbar">
+                <a href="#service" class="active">The Service</a>
+                <a href="#scope">What I Handle</a>
+                <a href="#engine">How It Works</a>
+                <a href="#output">Sample SOA</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- TAB 1: THE SERVICE -->
+        <div id="service">
+            <section class="container" style="padding-top: 6rem;">
+                <h1 class="hero-headline">Aged Care SOA Drafting.<br>$400. 48 Hours.</h1>
+                <div class="rule-line"></div>
+                <h2 class="hero-subheadline cormorant"><em>Calculation-accurate. Legislation-grounded.<br>Delivered to your inbox — not your calendar.</em></h2>
+                
+                <div class="stat-row">
+                    <div class="stat-block">
+                        <strong>$400</strong>
+                        flat fee per file
+                    </div>
+                    <div class="stat-block">
+                        <strong>48 hrs</strong>
+                        SLA from receipt of complete brief
+                    </div>
+                    <div class="stat-block">
+                        <strong>0</strong>
+                        client details retained
+                    </div>
+                    <div class="stat-block">
+                        <strong>1×</strong>
+                        free revision included
+                    </div>
+                </div>
+            </section>
+
+            <section class="container">
+                <span class="section-label dm-mono">The Bottleneck</span>
+                <h2 class="section-heading">Aged Care advice takes 15 hours.<br>Most of that time is not<br><em>spent on the client.</em></h2>
+                <p>The means test alone — MPIR, RAD/DAP waterfall, Primary Residence Exemption, Centrelink deeming — requires precise sequential calculation before a single word of strategy can be written. One figure wrong cascades through everything downstream.</p>
+                <p>For most boutique practices, that calculation burden falls on whoever is least busy, or most capable, or both. The result is a queue. The queue becomes a reason to refer out Aged Care cases entirely — and with them, the advice margin.</p>
+                <p>There is another option.</p>
+            </section>
+
+            <section class="container">
+                <span class="section-label dm-mono">The Service</span>
+                <h2 class="section-heading">Keep the case.<br>Keep the <em>margin.</em></h2>
+                <p>A referred Aged Care case typically carries an advice margin of $3,000–$5,000. At $400 per file, you keep that margin — and you remove the 15-hour calculation burden that made referring it out feel rational.</p>
+                <p>There is no platform to learn. No CRM integration. No Xplan login requested. You send me a completed fact-find and qualitative context. I run the calculation. You receive a structured, legislation-grounded SOA draft within 48 business hours of receipt of a complete brief.</p>
+                
+                <blockquote class="pull-quote">
+                    "The math does not guess. Every figure traces back to a named government rate, checked against current legislation. When thresholds change — and in 2025 and 2026, they changed significantly — the output reflects it."
+                </blockquote>
+            </section>
+
+            <section class="container">
+                <span class="section-label dm-mono">Engagement Terms</span>
+                
+                <div class="pricing-table">
+                    <div class="pricing-row">
+                        <div class="pricing-label">Service</div>
+                        <div class="pricing-value">Aged Care SOA Draft</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-label">Fee</div>
+                        <div class="pricing-value">$400 flat (per file)</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-label">SLA</div>
+                        <div class="pricing-value">48 business hours — clock starts on receipt of complete fact-find and qualitative context</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-label">Revision</div>
+                        <div class="pricing-value">One typographic correction included at no charge</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-label">Strategy Change</div>
+                        <div class="pricing-value">$250 (requires SOA redraft)</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-label">Trial</div>
+                        <div class="pricing-value">First file, free of charge — within scope only</div>
+                    </div>
+                </div>
+
+                <div class="compliance-callout">
+                    <span class="label dm-mono">Privacy Protocol</span>
+                    <p>This service operates on a PII-free basis. Before any data enters the calculation engine, client names, TFNs, and personally identifiable fields are redacted. Nothing is retained after delivery. No data is uploaded to a cloud model or used to train any AI system. I do not require access to your Xplan, CRM, or any practice management platform. The only inputs required are a completed fact-find and qualitative context provided by you.</p>
+                </div>
+            </section>
+
+            <section class="container">
+                <span class="section-label dm-mono">The Trial</span>
+                <h2 class="section-heading">Send me your next<br>Aged Care file.</h2>
+                <p>If you have an Aged Care case that falls within scope, send me the fact-find with client name redacted. I will run the calculation and return the full SOA draft at no charge. No commitment. No discovery call. The output speaks for itself.</p>
+                
+                <div class="btn-group">
+                    <a href="mailto:mickeyhuynh.fin@gmail.com" class="btn btn-primary">Send a file</a>
+                    <a href="#output" class="btn btn-secondary smooth-scroll">View sample output</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 2: SCOPE -->
+        <div id="scope">
+            <section class="container">
+                <span class="section-label dm-mono">Scope of Service</span>
+                <h2 class="section-heading">What I cover.<br>What I <em>do not.</em></h2>
+                
+                <div class="two-col">
+                    <div>
+                        <div class="scope-header in">In Scope</div>
+                        <ul class="scope-list">
+                            <li>Age Pension means testing — asset test and income test, singles and couples</li>
+                            <li>Aged care fee calculations under the November 2025 reforms — HSC, NCCC, DAP, Basic Daily Fee</li>
+                            <li>RAD optimisation — finding the funding amount that maximises pension while maintaining client liquidity</li>
+                            <li>Primary Residence Exemption — impact modelling for retaining versus selling the family home</li>
+                            <li>Centrelink deeming — financial assets, account-based pensions, annuities</li>
+                            <li>Illness-separated couple assessment</li>
+                            <li>Cashflow projection — net position after all fees, tax, and pension income</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="scope-header out">Out of Scope</div>
+                        <ul class="scope-list">
+                            <li>Self-Managed Superannuation Funds (SMSF)</li>
+                            <li>Complex family trusts</li>
+                            <li>Business succession planning</li>
+                            <li>Defined benefit schemes</li>
+                            <li>Files with incomplete fact-finds (returned unfilled)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="protocol-note dm-mono">
+                    "Engagement is asynchronous. There are no discovery calls, no Zoom sessions, and no onboarding process. All communication is via email. If your file falls outside scope, I will advise you within 24 hours of receipt."
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 3: THE ENGINE -->
+        <div id="engine">
+            <section class="container">
+                <span class="section-label dm-mono">How the Calculation Works</span>
+                <h2 class="section-heading">Precise. Auditable.<br><em>Current.</em></h2>
+                
+                <p>The calculation behind an Aged Care SOA is not complex because it is difficult to understand. It is complex because it is precise — a sequential waterfall of government-mandated figures, each one dependent on the last, each one subject to legislative change without notice.</p>
+                <p>The calculation runs deterministically. The same inputs produce the same outputs every time. Every figure in the output traces back to a specific government rate or threshold, named and sourced. There is no estimation and no rounding logic. The narrative sections are drafted by me, informed by the calculation output, and reviewed before delivery. The math and the words are produced separately — so the numbers are never interpreted, estimated, or paraphrased by anything other than the legislation they come from.</p>
+                <p>Government rates are monitored. When a threshold changes — and in 2025 and 2026 they changed significantly — the engine is updated and the output reflects current legislation. You are not working from a snapshot. You are working from a live rate table.</p>
+                
+                <div class="pdf-container">
+                    <span class="pdf-label dm-mono">Reference Document — Calculation Methodology</span>
+                    <iframe src="utils_ac_reference_vela.pdf" height="800" title="Calculation Methodology Reference"></iframe>
+                    <br>
+                    <a href="utils_ac_reference_vela.pdf" class="download-link" download>Download reference PDF</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 4: SAMPLE OUTPUT -->
+        <div id="output">
+            <section class="container">
+                <span class="section-label dm-mono">Illustrative Output</span>
+                <h2 class="section-heading">A complete SOA draft —<br>from fact-find to<br><em>final document.</em></h2>
+                
+                <p>The following is an illustrative SOA prepared for a fictional client. Names and identifying details are constructed for demonstration purposes. The calculations, waterfall methodology, and compliance language reflect actual output.</p>
+                <p>This is what arrives in your inbox within 48 business hours.</p>
+
+                <div class="pdf-container">
+                    <span class="pdf-label dm-mono">Sample Output — Aged Care SOA Draft</span>
+                    <iframe src="SOA_Draft_Robert.pdf" height="900" title="Aged Care SOA Draft"></iframe>
+                    <br>
+                    <a href="SOA_Draft_Robert.pdf" class="download-link" download>Download sample SOA</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 5: ABOUT -->
+        <div id="about">
+            <section class="container">
+                <span class="section-label dm-mono">About</span>
+                <h2 class="section-heading">The person<br>behind the <em>calculation.</em></h2>
+                
+                <p>I am completing a Graduate Diploma in Financial Planning at Kaplan Professional, currently maintaining a high distinction average.</p>
+                <p>My understanding of Aged Care advice did not come from sitting across the table from clients. It came from working directly inside a large Australian financial services institution — speaking with advisers, their support staff, and their clients daily, close enough to see exactly where the time went. Not into advice. Into the manual calculation of means tests, fee structures, and Centrelink interactions that have to be right before a single sentence of strategy can be written.</p>
+                <p>I also studied it. Every threshold in the calculation engine, every fee waterfall, every legislative rule is grounded in the same curriculum that prepares financial planners for practice. I hard-coded it — not because I do not trust the legislation, but because I do not trust human memory to retrieve the right figure under pressure, every time.</p>
+                <p>My intention is straightforward. A client in their seventies navigating residential aged care deserves an adviser who is fully present in that conversation — not one who is mentally recalculating a means test. I handle the calculation. You handle the client.</p>
+                
+                
+            </section>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="closing-quote">
+                "Your client is not waiting for a calculation. They are waiting for you."
+            </div>
+            
+            <div class="contact-block">
+                <a href="mailto:mickeyhuynh.fin@gmail.com">mickeyhuynh.fin@gmail.com</a><br>
+                Sydney, NSW<br>
+                Aged Care · Age Pension · SOA Drafting
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 800);
+            }, 2000); // give text time to fade in and out
+        });
+
+        // Intersection Observer for scroll reveal
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Navigation Highlight and Smooth Scroll
+        const sections = ['service', 'scope', 'engine', 'output', 'about'];
+        const navLinks = document.querySelectorAll('#navbar a');
+
+        // Smooth scroll for all links (nav and CTA)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    // Account for sticky header height
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scrollspy to update active tab
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const headerHeight = document.querySelector('header').offsetHeight;
+
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (!section) return;
+                
+                const sectionTop = section.offsetTop - headerHeight - 100;
+                if (pageYOffset >= sectionTop) {
+                    current = sectionId;
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Default to first tab if at very top
+            if (window.scrollY < 100) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                navLinks[0].classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
