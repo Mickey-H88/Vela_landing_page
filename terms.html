@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Engagement · Mickey Huynh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0f0e0c;
+            --paper: #f5f2ec;
+            --accent: #c84b2f;
+            --accent-muted: #e8a090;
+            --rule: #d4cfc6;
+            --mid: #7a7570;
+            --highlight: #f0e8d8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: 'Instrument Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6, .cormorant {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+        }
+
+        .dm-mono {
+            font-family: 'DM Mono', monospace;
+            font-weight: 400;
+        }
+
+        p {
+            max-width: 640px;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        em, i {
+            font-style: italic;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(245, 242, 236, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--rule);
+            z-index: 100;
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .wordmark {
+            font-size: 1.8rem;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .back-link {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--mid);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: color 0.3s, border-color 0.3s;
+            padding-bottom: 0.1rem;
+        }
+
+        .back-link:hover {
+            color: var(--ink);
+            border-bottom-color: var(--ink);
+        }
+
+        .back-link::before {
+            content: "← ";
+        }
+
+        /* Page header */
+        .page-header {
+            padding: 7rem 0 4rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            display: block;
+            font-family: 'DM Mono', monospace;
+        }
+
+        .page-title {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            line-height: 1.0;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .page-meta {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--mid);
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .page-meta span {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .page-meta .meta-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--accent);
+        }
+
+        /* Main content */
+        main {
+            padding: 5rem 0 8rem;
+        }
+
+        .terms-body {
+            max-width: 720px;
+        }
+
+        /* Section dividers */
+        .term-section {
+            padding: 3.5rem 0;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .term-section:first-child {
+            padding-top: 0;
+        }
+
+        .term-section:last-child {
+            border-bottom: none;
+        }
+
+        .term-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .term-heading {
+            font-size: 1.9rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: var(--ink);
+        }
+
+        .term-body p {
+            max-width: 100%;
+        }
+
+        .term-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Callout box */
+        .term-callout {
+            background-color: var(--highlight);
+            border-left: 2px solid var(--accent);
+            padding: 1.75rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .term-callout p {
+            max-width: 100%;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        .term-callout .callout-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Definition rows */
+        .def-table {
+            width: 100%;
+            border: 1px solid var(--rule);
+            margin-top: 1.5rem;
+        }
+
+        .def-row {
+            display: flex;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .def-row:last-child {
+            border-bottom: none;
+        }
+
+        .def-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--mid);
+            padding: 1.25rem 1.5rem;
+            width: 160px;
+            flex-shrink: 0;
+            border-right: 1px solid var(--rule);
+        }
+
+        .def-value {
+            padding: 1.25rem 1.5rem;
+            flex-grow: 1;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 5rem 0;
+            border-top: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-block {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--mid);
+            line-height: 1.9;
+        }
+
+        .contact-block a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .contact-block a:hover {
+            border-bottom-color: var(--mid);
+        }
+
+        /* Rule line */
+        .rule-line {
+            height: 1px;
+            background-color: var(--rule);
+            width: 100%;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .page-header {
+                padding: 5rem 0 3rem;
+            }
+
+            .def-label {
+                width: 120px;
+            }
+
+            .page-meta {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="/" class="wordmark cormorant">Mickey Huynh</a>
+            <a href="/" class="back-link">Back to the service</a>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <span class="section-label">Engagement</span>
+            <h1 class="page-title cormorant">Terms of<br><em>Engagement.</em></h1>
+            <div class="rule-line"></div>
+            <p style="max-width: 560px; color: var(--mid); font-size: 1rem; margin-bottom: 0;">This document sets out the terms under which the Aged Care SOA drafting service is provided. It is written in plain English. There is no boilerplate. Every clause is here because it is relevant to how the service works.</p>
+
+            <div class="page-meta">
+                <span>
+                    <span class="meta-label">Operator</span>
+                    Mickey Huynh
+                </span>
+                <span>
+                    <span class="meta-label">ABN</span>
+                    [YOUR ABN HERE]
+                </span>
+                <span>
+                    <span class="meta-label">Location</span>
+                    Sydney, NSW
+                </span>
+                <span>
+                    <span class="meta-label">Effective</span>
+                    April 2026
+                </span>
+                <span>
+                    <span class="meta-label">Contact</span>
+                    mickey@velaadvice.com
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            <div class="terms-body">
+
+                <!-- 1. The Service -->
+                <div class="term-section">
+                    <span class="term-number">01</span>
+                    <h2 class="term-heading cormorant">What this service is —<br>and what it is <em>not.</em></h2>
+                    <div class="term-body">
+                        <p>This is an Aged Care SOA drafting and calculation service. You provide a completed fact-find and qualitative context. I run the calculation, draft the narrative sections, and return a structured SOA working document.</p>
+                        <p>This service does not constitute financial advice under the <em>Corporations Act 2001</em> (Cth). The document delivered is a working draft. Review, compliance sign-off, and the licensed advice obligation remain entirely with the engaging adviser and their AFS licensee.</p>
+                        <p>I am not a party to the client relationship. I do not communicate with your client. I do not hold an Australian Financial Services Licence.</p>
+
+                        <div class="term-callout">
+                            <span class="callout-label">The boundary in one sentence</span>
+                            <p>I produce the calculation and the draft. You produce the advice.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Fee and Payment -->
+                <div class="term-section">
+                    <span class="term-number">02</span>
+                    <h2 class="term-heading cormorant">Fee and <em>payment.</em></h2>
+                    <div class="term-body">
+                        <div class="def-table">
+                            <div class="def-row">
+                                <div class="def-label">Fee</div>
+                                <div class="def-value">$400 per file, flat. No subscription. No minimum volume. No platform fee.</div>
+                            </div>
+                            <div class="def-row">
+                                <div class="def-label">Invoicing</div>
+                                <div class="def-value">Invoice is issued on delivery of the completed draft.</div>
+                            </div>
+                            <div class="def-row">
+                                <div class="def-label">Payment terms</div>
+                                <div class="def-value">7 days from invoice date, via bank transfer or Stripe payment link.</div>
+                            </div>
+                            <div class="def-row">
+                                <div class="def-label">Trial file</div>
+                                <div class="def-value">The first file is provided at no charge, within scope. No payment terms apply to the trial.</div>
+                            </div>
+                            <div class="def-row">
+                                <div class="def-label">Strategy change</div>
+                                <div class="def-value">$250, where a change to the advice strategy requires a material redraft of the SOA. Typographic and numerical corrections are included at no charge (see Clause 4).</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Turnaround -->
+                <div class="term-section">
+                    <span class="term-number">03</span>
+                    <h2 class="term-heading cormorant">Turnaround <em>time.</em></h2>
+                    <div class="term-body">
+                        <p>The standard turnaround is 2–3 business days from receipt of a complete brief. A brief is complete when it includes a legible fact-find and sufficient qualitative context to draft the strategy narrative.</p>
+                        <p>The clock does not start until the brief is complete. If a submitted file is missing information, I will advise you within 24 hours of receipt and the SLA clock will start only once the missing information is provided.</p>
+                        <p>Turnaround may vary with complexity. Cases involving illness-separated couples, partial RAD structures, or multiple annuity products may require an additional business day. I will advise you at the time of receipt if this applies.</p>
+                    </div>
+                </div>
+
+                <!-- 4. Revisions -->
+                <div class="term-section">
+                    <span class="term-number">04</span>
+                    <h2 class="term-heading cormorant">Revisions and <em>redrafts.</em></h2>
+                    <div class="term-body">
+                        <p>One typographic or numerical correction is included with each file at no charge. This covers errors of transcription — a figure entered incorrectly, a name misspelled, a date transposed.</p>
+                        <p>A strategy change is a revision that alters the advice recommendation — for example, changing the recommended RAD amount, the funding structure, or a material assumption in the projection. Strategy changes require a partial or full redraft and are charged at $250.</p>
+                        <p>If there is any doubt about whether a requested change is a correction or a strategy change, I will advise you before proceeding.</p>
+                    </div>
+                </div>
+
+                <!-- 5. Scope -->
+                <div class="term-section">
+                    <span class="term-number">05</span>
+                    <h2 class="term-heading cormorant">Scope and <em>out-of-scope files.</em></h2>
+                    <div class="term-body">
+                        <p>The service covers Aged Care SOA drafting within the scope defined on the service page at velaadvice.com. If a submitted file falls outside scope, I will advise you within 24 business hours of receipt. No fee applies to out-of-scope files.</p>
+                        <p>Files that fall outside scope include cases involving Self-Managed Superannuation Funds (SMSF), defined benefit schemes, complex family trusts, business succession planning, overseas pensions, and capital gains tax advice on property transactions.</p>
+                        <p>Where a file is partially within scope, I will advise you which elements can be completed and which cannot.</p>
+                    </div>
+                </div>
+
+                <!-- 6. Data and Privacy -->
+                <div class="term-section">
+                    <span class="term-number">06</span>
+                    <h2 class="term-heading cormorant">Data and <em>privacy.</em></h2>
+                    <div class="term-body">
+                        <p>This service operates on a minimum-data basis. The only personal information required to complete the calculation is the client's date of birth, financial position, and care context. Client names are used only in the narrative sections and are removed from the working file before the calculation runs.</p>
+                        <p>You are responsible for removing the client's TFN before sending any file. TFNs are not required for any part of the calculation or drafting process and should not be included in submissions.</p>
+                        <p>Nothing is retained after delivery. The fact-find, working files, and completed draft are deleted from my systems on confirmation of delivery. No client data is stored, archived, uploaded to a cloud model, or used to train any AI system.</p>
+                        <p>I do not require access to your Xplan, CRM, or any practice management platform. Files may be sent as a PDF export from Xplan or in any legible format.</p>
+
+                        <div class="term-callout">
+                            <span class="callout-label">Your obligations</span>
+                            <p>You are responsible for ensuring you have appropriate authority to share the client information contained in the fact-find with a third-party service provider, in accordance with your privacy policy, your AFS licence obligations, and the <em>Privacy Act 1988</em> (Cth) where applicable.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Liability -->
+                <div class="term-section">
+                    <span class="term-number">07</span>
+                    <h2 class="term-heading cormorant">Liability and <em>reliance.</em></h2>
+                    <div class="term-body">
+                        <p>The draft delivered is a working document for review by a licensed financial adviser. It is not a Statement of Advice as defined under the <em>Corporations Act 2001</em> (Cth) and does not constitute personal financial advice.</p>
+                        <p>The calculations are based on the information provided in the fact-find and the government rates current at the time of preparation. The accuracy of the output is contingent on the accuracy and completeness of the information submitted. If submitted information is incorrect or incomplete, the output will reflect that.</p>
+                        <p>You are responsible for reviewing all figures and narrative sections before presenting the advice to a client or submitting the document for compliance review. Reliance on the draft without independent review does not transfer liability from the licensed adviser to this service.</p>
+                        <p>To the extent permitted by law, liability for any loss or damage arising from reliance on the draft is limited to the fee paid for the file in question.</p>
+                    </div>
+                </div>
+
+                <!-- 8. Governing Law -->
+                <div class="term-section">
+                    <span class="term-number">08</span>
+                    <h2 class="term-heading cormorant">Governing <em>law.</em></h2>
+                    <div class="term-body">
+                        <p>These terms are governed by the laws of New South Wales, Australia. Any dispute arising from the engagement will be subject to the exclusive jurisdiction of the courts of New South Wales.</p>
+                        <p>These terms may be updated from time to time. The version in effect at the time a brief is received is the version that governs that engagement. Material changes will be communicated to active clients by email.</p>
+                    </div>
+                </div>
+
+                <!-- Questions -->
+                <div class="term-section">
+                    <span class="term-number">—</span>
+                    <h2 class="term-heading cormorant">Questions about<br>these <em>terms.</em></h2>
+                    <div class="term-body">
+                        <p>If anything here is unclear, email me directly. I would rather answer a question before engagement than resolve ambiguity after it.</p>
+                        <p style="margin-bottom: 0;">
+                            <a href="mailto:mickey@velaadvice.com" style="color: var(--ink); font-family: 'DM Mono', monospace; font-size: 0.95rem; text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 1px; transition: opacity 0.3s;">mickey@velaadvice.com</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="contact-block">
+                    <a href="mailto:mickey@velaadvice.com">mickey@velaadvice.com</a><br>
+                    Sydney, NSW · ABN [YOUR ABN HERE]<br>
+                    <a href="/">velaadvice.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
