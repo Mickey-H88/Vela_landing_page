@@ -445,6 +445,63 @@
             text-align: center;
         }
 
+        /* About — headshot + contact */
+        .about-lead {
+            display: grid;
+            grid-template-columns: min(200px, 32vw) 1fr;
+            gap: 2rem 2.5rem;
+            align-items: start;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-lead .about-lead-text p {
+            margin-bottom: 0;
+        }
+
+        .about-headshot {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--rule);
+            display: block;
+        }
+
+        .about-contact {
+            margin-top: 2.5rem;
+            max-width: 640px;
+        }
+
+        .about-contact a {
+            border-bottom: 1px solid transparent;
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        .about-contact a:hover {
+            color: var(--ink);
+            border-bottom-color: var(--mid);
+        }
+
+        @media (max-width: 768px) {
+            .about-lead {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+                justify-items: center;
+                text-align: center;
+            }
+
+            .about-lead .about-lead-text {
+                text-align: left;
+            }
+
+            .about-headshot {
+                max-width: 140px;
+            }
+        }
+
         /* Footer */
         footer {
             padding: 6rem 0;
@@ -763,12 +820,20 @@
                 <span class="section-label dm-mono">About</span>
                 <h2 class="section-heading">The person<br>behind the <em>calculation.</em></h2>
                 
-                <p>I am completing a Graduate Diploma in Financial Planning at Kaplan Professional, currently maintaining a high distinction average.</p>
+                <div class="about-lead">
+                    <img src="Mickey_profile%20photo.png" alt="Mickey Huynh" class="about-headshot" width="220" height="220" decoding="async">
+                    <div class="about-lead-text">
+                        <p>I am completing a Graduate Diploma in Financial Planning at Kaplan Professional, currently maintaining a high distinction average.</p>
+                    </div>
+                </div>
                 <p>My understanding of Aged Care advice did not come from sitting across the table from clients. It came from working directly inside a large Australian financial services institution — speaking with advisers, their support staff, and their clients daily, close enough to see exactly where the time went. Not into advice. Into the manual calculation of means tests, fee structures, and Centrelink interactions that have to be right before a single sentence of strategy can be written.</p>
                 <p>I also studied it. Every threshold in the calculation, every fee waterfall, every legislative rule is grounded in the same curriculum that prepares financial planners for practice. I hard-coded it — not because I do not trust the legislation, but because I do not trust human memory to retrieve the right figure under pressure, every time.</p>
                 <p>My intention is straightforward. A client in their seventies navigating residential aged care deserves an adviser who is fully present in that conversation — not one who is mentally recalculating a means test. I handle the calculation. You handle the client.</p>
-                
-                
+
+                <div class="about-contact contact-block">
+                    <a href="mailto:mickey@velaadvice.com">mickey@velaadvice.com</a><span aria-hidden="true"> · </span>Sydney, NSW<br>
+                    <a href="https://www.linkedin.com/in/mickey-huynh/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+                </div>
             </section>
         </div>
 
