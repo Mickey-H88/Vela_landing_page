@@ -781,10 +781,9 @@
                 
                 <div class="pdf-container">
                     <span class="pdf-label dm-mono">Reference Document — Calculation Methodology</span>
-                    <!-- Bump ?v= when you replace the PDF so visitors get the new file (bypasses CDN/browser cache). -->
-                    <iframe src="Age_Pension_Reference_Manual_2026.pdf?v=202605061200" height="800" title="Calculation Methodology Reference"></iframe>
+                    <iframe id="age-pension-ref-iframe" height="800" title="Calculation Methodology Reference"></iframe>
                     <br>
-                    <a href="Age_Pension_Reference_Manual_2026.pdf?v=202605061200" class="download-link" download>Download reference PDF</a>
+                    <a id="age-pension-ref-download" href="Age_Pension_Reference_Manual_2026.pdf" class="download-link" download>Download reference PDF</a>
                 </div>
             </section>
         </div>
@@ -800,10 +799,9 @@
 
                 <div class="pdf-container">
                     <span class="pdf-label dm-mono">Sample Output — Aged Care SOA Draft</span>
-                    <!-- Bump ?v= when you replace the PDF so visitors get the new file (bypasses CDN/browser cache). -->
-                    <iframe src="SOA_Final_Audited_Brad.pdf?v=202605051200" height="900" title="Aged Care SOA Draft"></iframe>
+                    <iframe id="soa-sample-iframe" height="900" title="Aged Care SOA Draft"></iframe>
                     <br>
-                    <a href="SOA_Final_Audited_Brad.pdf?v=202605051200" class="download-link" download>Download sample SOA</a>
+                    <a id="soa-sample-download" href="SOA_Final_Audited_Brad.pdf" class="download-link" download>Download sample SOA</a>
                 </div>
             </section>
         </div>
@@ -854,6 +852,31 @@
     </footer>
 
     <script>
+        // PDF cache busting: bump timestamps when you replace a file so CDNs/browsers fetch the new bytes.
+        // SOA sample version aligned to SOA_Final_Audited_Brad.pdf LastWriteTime (local).
+        (function wirePdfCacheBusters() {
+            var PDF_CACHE = {
+                soaSample: '202605060822',
+                agePensionRef: '202605061200'
+            };
+            var soaIframe = document.getElementById('soa-sample-iframe');
+            var soaLink = document.getElementById('soa-sample-download');
+            if (soaIframe) {
+                soaIframe.src = 'SOA_Final_Audited_Brad.pdf?v=' + PDF_CACHE.soaSample;
+            }
+            if (soaLink) {
+                soaLink.href = 'SOA_Final_Audited_Brad.pdf?v=' + PDF_CACHE.soaSample;
+            }
+            var refIframe = document.getElementById('age-pension-ref-iframe');
+            var refLink = document.getElementById('age-pension-ref-download');
+            if (refIframe) {
+                refIframe.src = 'Age_Pension_Reference_Manual_2026.pdf?v=' + PDF_CACHE.agePensionRef;
+            }
+            if (refLink) {
+                refLink.href = 'Age_Pension_Reference_Manual_2026.pdf?v=' + PDF_CACHE.agePensionRef;
+            }
+        })();
+
         // Page Loader — use DOMContentLoaded, not "load". Waiting for "load" blocks on PDF
         // iframes (and any slow asset), so the full-screen overlay can stay forever and eat clicks.
         function dismissLoader() {
